@@ -1,0 +1,15 @@
+{
+  "name": "async-learning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "calculate-square.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.1.3"
+  }
+}

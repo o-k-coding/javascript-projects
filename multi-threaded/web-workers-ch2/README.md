@@ -50,6 +50,18 @@ So where does console.log end up?
 So something I am picking up is that a window shares a console environment, which is why all the console.logs show up in the same place with dedicated workers.
 
 Firefox uses the original window that created the shared worker.
-Chrome does not show shared worker logs at all, so you would need to listen for messages and log them in a main thread. (I am assuming each window gets a main thread and event loop)
+Chrome does not show shared worker logs at all, so you would need to listen for messages and log them in a main thread. (I am assuming each window gets a main thread and event loop).
+
+Shared workers can be used to fold semi persistent state since they are not attached to any window. Each window that connects can write or ask for a value. If you close all windows that are connected though, the next window to connect will re evaluate the worker script. So then to share state you would need local storage maybe?
+
+the worker script is cached as well when used by multiple windows, so close down to a single connected window, and refresh that one to get code changes in the script.
 
 ### Debugging shared workers
+
+Firefox: visit <about:debugging>
+Click `This Firefox`
+
+Chrome visit <chrome://inspect/#workers>
+
+find the script you want to debug and click inspect.
+Browser will then take you to a dedicated console attached to the worker.
